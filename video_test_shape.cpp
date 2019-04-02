@@ -32,20 +32,20 @@ int main()
 
     //fill in 3D ref points(world coordinates), model referenced from http://aifi.isr.uc.pt/Downloads/OpenGL/glAnthropometric3DModel.cpp
     std::vector<cv::Point3d> object_pts;
-    object_pts.push_back(cv::Point3d(6.825897, 6.760612, 4.402142));     //#33 left brow left corner
-    object_pts.push_back(cv::Point3d(1.330353, 7.122144, 6.903745));     //#29 left brow right corner
-    object_pts.push_back(cv::Point3d(-1.330353, 7.122144, 6.903745));    //#34 right brow left corner
-    object_pts.push_back(cv::Point3d(-6.825897, 6.760612, 4.402142));    //#38 right brow right corner
-    object_pts.push_back(cv::Point3d(5.311432, 5.485328, 3.987654));     //#13 left eye left corner
-    object_pts.push_back(cv::Point3d(1.789930, 5.393625, 4.413414));     //#17 left eye right corner
-    object_pts.push_back(cv::Point3d(-1.789930, 5.393625, 4.413414));    //#25 right eye left corner
-    object_pts.push_back(cv::Point3d(-5.311432, 5.485328, 3.987654));    //#21 right eye right corner
-    object_pts.push_back(cv::Point3d(2.005628, 1.409845, 6.165652));     //#55 nose left corner
-    object_pts.push_back(cv::Point3d(-2.005628, 1.409845, 6.165652));    //#49 nose right corner
-    object_pts.push_back(cv::Point3d(2.774015, -2.080775, 5.048531));    //#43 mouth left corner
-    object_pts.push_back(cv::Point3d(-2.774015, -2.080775, 5.048531));   //#39 mouth right corner
-    object_pts.push_back(cv::Point3d(0.000000, -3.116408, 6.097667));    //#45 mouth central bottom corner
-    object_pts.push_back(cv::Point3d(0.000000, -7.415691, 4.070434));    //#6 chin corner
+    object_pts.push_back(cv::Point3d(6.825897, 6.760612, 4.402142));     //#17 left brow left corner
+    object_pts.push_back(cv::Point3d(1.330353, 7.122144, 6.903745));     //#21 left brow right corner
+    object_pts.push_back(cv::Point3d(-1.330353, 7.122144, 6.903745));    //#22 right brow left corner
+    object_pts.push_back(cv::Point3d(-6.825897, 6.760612, 4.402142));    //#26 right brow right corner
+    object_pts.push_back(cv::Point3d(5.311432, 5.485328, 3.987654));     //#36 left eye left corner
+    object_pts.push_back(cv::Point3d(1.789930, 5.393625, 4.413414));     //#39 left eye right corner
+    object_pts.push_back(cv::Point3d(-1.789930, 5.393625, 4.413414));    //#42 right eye left corner
+    object_pts.push_back(cv::Point3d(-5.311432, 5.485328, 3.987654));    //#45 right eye right corner
+    object_pts.push_back(cv::Point3d(2.005628, 1.409845, 6.165652));     //#31 nose left corner
+    object_pts.push_back(cv::Point3d(-2.005628, 1.409845, 6.165652));    //#35 nose right corner
+    object_pts.push_back(cv::Point3d(2.774015, -2.080775, 5.048531));    //#48 mouth left corner
+    object_pts.push_back(cv::Point3d(-2.774015, -2.080775, 5.048531));   //#54 mouth right corner
+    object_pts.push_back(cv::Point3d(0.000000, -3.116408, 6.097667));    //#57 mouth central bottom corner
+    object_pts.push_back(cv::Point3d(0.000000, -7.415691, 4.070434));    //#8 chin corner
 
     //2D ref points(image coordinates), referenced from detected facial feature
     std::vector<cv::Point2d> image_pts;
