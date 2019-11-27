@@ -8,7 +8,8 @@ face_landmark_path = './shape_predictor_68_face_landmarks.dat'
 K = [6.5308391993466671e+002, 0.0, 3.1950000000000000e+002,
      0.0, 6.5308391993466671e+002, 2.3950000000000000e+002,
      0.0, 0.0, 1.0]
-D = [7.0834633684407095e-002, 6.9140193737175351e-002, 0.0, 0.0, -1.3073460323689292e+000]
+D = [7.0834633684407095e-002, 6.9140193737175351e-002,
+     0.0, 0.0, -1.3073460323689292e+000]
 
 cam_matrix = np.array(K).reshape(3, 3).astype(np.float32)
 dist_coeffs = np.array(D).reshape(5, 1).astype(np.float32)
@@ -43,11 +44,19 @@ line_pairs = [[0, 1], [1, 2], [2, 3], [3, 0],
 
 
 def get_head_pose(shape):
-    image_pts = np.float32([shape[17], shape[21], shape[22], shape[26], shape[36],
-                            shape[39], shape[42], shape[45], shape[31], shape[35],
-                            shape[48], shape[54], shape[57], shape[8]])
+    if len(shape) == 68:
+        image_pts = np.float32([shape[17], shape[21], shape[22], shape[26], shape[36],
+                                shape[39], shape[42], shape[45], shape[31], shape[35],
+                                shape[48], shape[54], shape[57], shape[8]])
+    elif len(shape) == 98:
+        image_pts = np.float32([shape[33], shape[38], shape[50], shape[46], shape[60],
+                                shape[64], shape[68], shape[72], shape[55], shape[59],
+                                shape[76], shape[82], shape[85], shape[16]])
+    else:
+        raise RuntimeError('Unsupported shape format')
 
-    _, rotation_vec, translation_vec = cv2.solvePnP(object_pts, image_pts, cam_matrix, dist_coeffs)
+    _, rotation_vec, translation_vec = cv2.solvePnP(
+        object_pts, image_pts, cam_matrix, dist_coeffs)
 
     reprojectdst, _ = cv2.projectPoints(reprojectsrc, rotation_vec, translation_vec, cam_matrix,
                                         dist_coeffs)
@@ -86,7 +95,8 @@ def main():
                     cv2.circle(frame, (x, y), 1, (0, 0, 255), -1)
 
                 for start, end in line_pairs:
-                    cv2.line(frame, reprojectdst[start], reprojectdst[end], (0, 0, 255))
+                    cv2.line(frame, reprojectdst[start],
+                             reprojectdst[end], (0, 0, 255))
 
                 cv2.putText(frame, "X: " + "{:7.2f}".format(euler_angle[0, 0]), (20, 20), cv2.FONT_HERSHEY_SIMPLEX,
                             0.75, (0, 0, 0), thickness=2)

@@ -9,11 +9,18 @@ Real-time head pose estimation built with OpenCV and dlib
 <br>Training set is based on i-bug 300-W datasets. It's annotation is shown below:<br><br>
 ![ibug](https://cloud.githubusercontent.com/assets/16308037/24229391/1910e9cc-0fb4-11e7-987b-0fecce2c829e.JPG)
 <br><br>
+
 <b>3D:</b><br>To match with 2D image points(facial features) we need their corresponding 3D model points. 
 <br>http://aifi.isr.uc.pt/Downloads/OpenGL/glAnthropometric3DModel.cpp provides a similar 3D facial feature model.
 <br>It's annotation is shown below:<br><br>
 ![gl](https://cloud.githubusercontent.com/assets/16308037/24229340/ea8bad94-0fb3-11e7-9e1d-0a2217588ba4.jpg)
 <br><br>
-Finally, with solvepnp function in OpenCV, we can achieve real-time head pose estimation.
+
+<b>WFLW:</b><br>Wider Facial Landmarks in-the-wild (WFLW) contains 10000 faces (7500 for training and 2500 for testing) with 98 fully manual annotated landmarks. Apart from landmark annotation, out new dataset includes rich attribute annotations. [Project Website](https://wywu.github.io/projects/LAB/WFLW.html)
+<br>It's annotation is shown below:
+<br><br>
+![WFLW](https://wywu.github.io/projects/LAB/support/WFLW_annotation.png)
 <br><br>
 
+Finally, with solvepnp function in OpenCV, we can achieve real-time head pose estimation.
+<br><br>
